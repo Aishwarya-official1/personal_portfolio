@@ -42,121 +42,101 @@ Home.jsx - runs once when the page loads ([] dependency), uses setTimeout to fak
 ThemeContext.jsx - runs every time theme changes . Saves the theme to localStorage and updates the data-theme attribute on <html> so the CSS variables switch. This is also how the theme survives a page refresh.
 Navbar.jsx - runs once on mount, adds a window resize listener so the mobile menu auto-closes if you resize back to desktop width. Removes the listener on unmount so it doesn't leak.
 
-## Assignment 3: Backend Integration
-
-### Running the project
-
-Backend:
-
-```bash
-cd server
-npm install
-npm start
-
-Frontend, in another terminal:
-
-npm install
-npm run dev
-API Endpoints
-
-Method
-
-	
-
-Endpoint
-
-	
-
-Description
 
 
+6. Backend Integration
 
+For Assignment 3, I added a Node.js and Express backend to the portfolio website.
 
-GET
+The backend provides project data through API endpoints and handles contact form submissions.
 
-	
+The project data used by the backend is stored in:
 
-/
+server/data/projects.js
 
-	
+The frontend now fetches project data from the backend instead of depending only on the local project array.
 
-Backend health check
+Backend API Endpoints
+Method	Endpoint	Description
+GET	/	Checks whether the backend is running
+GET	/api/projects	Returns all projects
+GET	/api/projects/:id	Returns one project using its ID
+POST	/api/contact	Validates and stores a contact submission
+GET	/api/contact	Returns all stored contact submissions
 
+If an invalid project ID is requested, the backend returns a 404 response:
 
+{
+  "error": "Project not found"
+}
 
+If an invalid route is requested, the backend returns:
 
-GET
+{
+  "error": "Route not found"
+}
+Contact API
 
-	
+The contact form sends a POST request to:
 
-/api/projects
+http://localhost:5050/api/contact
 
-	
+Example request body:
 
-Get all projects
-
-
-
-
-GET
-
-	
-
-/api/projects/:id
-
-	
-
-Get one project
-
-
-
-
-POST
-
-	
-
-/api/contact
-
-	
-
-Submit contact form
-
-
-
-
-GET
-
-	
-
-/api/contact
-
-	
-
-Get all contact submissions
-
-Example POST request
 {
   "name": "Aishwarya",
   "email": "aishu@example.com",
   "message": "Hello"
 }
 
-GET /api/contact is intentionally open and does not require authentication.
+A successful submission returns HTTP status 201.
 
+The backend validates the required fields and checks the email format before storing the submission.
+
+The GET /api/contact endpoint is intentionally open and does not require authentication, as required for this assignment.
+
+Environment Variables
+
+The backend uses dotenv for configuration.
+
+The .env.example file contains the required environment variable names:
+
+PORT=5050
+CLIENT_ORIGIN=http://localhost:5173
+
+The actual .env file is not included in the repository.
+
+Example API Tests
+
+Check the backend:
+
+curl http://localhost:5050/
+
+Get all projects:
+
+curl http://localhost:5050/api/projects
+
+Get one project:
+
+curl http://localhost:5050/api/projects/abac-policy-compiler
+
+Test an invalid project ID:
+
+curl http://localhost:5050/api/projects/invalid-id
+
+Submit a contact form:
+
+curl -X POST http://localhost:5050/api/contact \
+-H "Content-Type: application/json" \
+-d '{"name":"Aishwarya","email":"aishu@example.com","message":"Hello"}'
+
+Get contact submissions:
+
+curl http://localhost:5050/api/contact
+
+Test an invalid route:
+
+curl http://localhost:5050/api/unknown
 AI Assistance Disclosure
 
-AI assistance was used for limited implementation and debugging guidance. The code was reviewed and integrated into the project manually.
-
-
-Then ensure these files exist:
-
-```text
-server/.env
-server/.env.example
-
-Finally, check your Git status and commit/push your work:
-
-git status
-git add .
-git commit -m "Complete Assignment 3 backend integration"
-git push
+AI assistance was used for limited implementation guidance and debugging. I reviewed the code, integrated the changes into my project, and tested the application manually.
