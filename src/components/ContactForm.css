@@ -1,0 +1,65 @@
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+form label {
+  margin-bottom: 5px;
+  font-weight: 600;
+}
+
+form input,
+form textarea {
+  font-family: 'Poppins', sans-serif;
+  border: 2px solid var(--link-color);
+  background-color: transparent;
+  color: var(--text-color);
+  padding: 10px;
+  margin-bottom: 5px;
+  outline: none;
+  resize: none;
+}
+
+form textarea {
+  min-height: 120px;
+  margin-bottom: 5px;
+}
+
+form input:focus,
+form textarea:focus {
+  border-color: var(--text-color);
+  box-shadow: 0 0 5px rgba(74, 118, 238, 0.4);
+}
+
+.field-error {
+  color: #e14b4b;
+  font-size: 13px;
+  margin-bottom: 12px;
+}
+
+form button {
+  font-size: 16px;
+  font-family: 'Poppins', sans-serif;
+  color: #fff;
+  background-color: var(--link-color);
+  border: none;
+  height: 50px;
+  margin-top: 10px;
+  cursor: pointer;
+  transition: 0.1s;
+}
+
+form button:hover:not(:disabled) {
+  filter: brightness(0.9);
+}
+
+form button:disabled {
+  background-color: #a9a9a9;
+  cursor: not-allowed;
+}
+
+.success-message {
+  margin-top: 15px;
+  color: #2e8b57;
+  font-weight: 600;
+}

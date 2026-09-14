@@ -1,0 +1,16 @@
+.projects-section {
+  padding: 0 50px;
+  margin-bottom: 100px;
+}
+
+.projects-section h2 {
+  font-size: 35px;
+  margin-bottom: 30px;
+}
+
+@media (max-width: 480px) {
+  .projects-section {
+    padding: 0 20px;
+    text-align: center;
+  }
+}

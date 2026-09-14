@@ -1,0 +1,65 @@
+.project {
+  border: 2px solid var(--link-color);
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 25px;
+}
+
+.project-image {
+  width: 100%;
+  max-width: 300px;
+  border-radius: 6px;
+  margin-bottom: 10px;
+}
+
+.project h3 {
+  font-size: 22px;
+  margin-bottom: 8px;
+}
+
+.tech-stack {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.tech-stack li {
+  font-size: 13px;
+  background-color: var(--link-color);
+  color: #fff;
+  padding: 3px 10px;
+  border-radius: 12px;
+}
+
+.project .description {
+  line-height: 1.6;
+}
+
+.project .description.expanded {
+  font-weight: 500;
+}
+
+.project-actions {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+  margin-top: 12px;
+}
+
+.project-actions button {
+  font-family: 'Poppins', sans-serif;
+  font-size: 14px;
+  color: #fff;
+  background-color: var(--link-color);
+  border: none;
+  padding: 8px 14px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.1s;
+}
+
+.project-actions button:hover {
+  filter: brightness(0.9);
+}

@@ -1,0 +1,13 @@
+.not-found-section {
+  text-align: center;
+  padding: 100px 20px;
+}
+
+.not-found-section h2 {
+  font-size: 40px;
+  margin-bottom: 15px;
+}
+
+.not-found-section p {
+  margin-bottom: 20px;
+}
